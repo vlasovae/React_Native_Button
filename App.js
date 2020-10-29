@@ -20,7 +20,6 @@ class App extends Component {
     } else {
       this.setState({text: <Text>  </Text>})
     }
-    console.log(this.state.show_text + " \n " + this.state.text);
   }
 
   render() {
