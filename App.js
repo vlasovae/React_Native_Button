@@ -1,21 +1,59 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+} from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+class App extends Component {
+
+  state = {
+    show_text: false,
+    text: <Text>  </Text>,
+  }
+
+  onPress = () => {
+    this.setState({show_text: !this.state.show_text});
+    if (this.state.show_text) {
+      this.setState({text: <Text> Hello World! </Text>})
+    } else {
+      this.setState({text: <Text>  </Text>})
+    }
+    console.log(this.state.show_text + " \n " + this.state.text);
+  }
+
+  render() {
+    let text;
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity
+         style={styles.button}
+         onPress={this.onPress}
+        >
+         <Text>Click on me for a nice message!</Text>
+        </TouchableOpacity>
+        <View>
+          {this.state.text}
+        </View>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#7cadfc',
   },
-});
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#ffd1f8',
+    padding: 10,
+    marginBottom: 10
+  }
+})
+
+export default App;
