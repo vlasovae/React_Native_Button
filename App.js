@@ -10,20 +10,21 @@ class App extends Component {
 
   state = {
     show_text: false,
-    text: <Text>  </Text>,
+    text: <Text></Text>,
   }
 
   onPress = () => {
-    this.setState({show_text: !this.state.show_text});
-    if (this.state.show_text) {
-      this.setState({text: <Text> Hello World! </Text>})
+    let local_show_text = !this.state.show_text
+    let local_text;
+    if (local_show_text) {
+      local_text = <Text> Hello World! </Text>
     } else {
-      this.setState({text: <Text>  </Text>})
+      local_text = <Text></Text>
     }
+    this.setState({text: local_text, show_text: local_show_text});
   }
 
   render() {
-    let text;
     return (
       <View style={styles.container}>
         <TouchableOpacity
